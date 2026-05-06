@@ -39,3 +39,57 @@ Unlike traditional linters or static analysis tools, this agent provides:
 ---
 
 ## 🏗️ Architecture
+
+        +----------------------+
+        |  Input Repository    |
+        +----------+-----------+
+                   |
+                   v
+        +----------------------+
+        | File Parser & Loader |
+        +----------+-----------+
+                   |
+                   v
+        +----------------------+
+        |  LLM Review Engine   |
+        | (GPT / Claude)       |
+        +----------+-----------+
+                   |
+                   v
+        +----------------------+
+        | Report Generator     |
+        +----------+-----------+
+                   |
+                   v
+        +----------------------+
+        | Markdown Reports     |
+        +----------------------+
+
+        
+---
+
+## 🛠️ Tech Stack
+
+- Python
+- OpenAI GPT (current)
+- Claude (planned integration)
+- Azure OpenAI
+- Markdown reporting
+
+---
+
+## 📌 Example Output
+
+### 🔹 File: `utils.py`
+
+**Issues Detected:**
+- ❗ Unhandled exception in function `process_data()`
+- ⚠️ Inefficient loop (can be vectorized)
+- 🔒 Missing input validation
+
+**Suggested Fix:**
+```python
+try:
+    result = process_data(data)
+except Exception as e:
+    logger.error(f"Processing failed: {e}")
